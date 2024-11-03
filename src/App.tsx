@@ -4,7 +4,7 @@ import { Moon, Sun } from "lucide-react";
 
 const App = () => {
   const { toggleTheme, themeMode } = useTheme();
-
+ 
   return (
     <div className="h-screen flex flex-col items-center justify-center bg-primary">
       <div className="flex items-center gap-5">
