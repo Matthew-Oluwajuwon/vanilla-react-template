@@ -38,17 +38,17 @@ const AppLayout: React.FC = () => {
               label: "nav 1",
               children: [
                 {
-                  key: "3",
+                  key: "01",
                   icon: <UploadOutlined />,
                   label: "nav 3",
                 },
                 {
-                  key: "3",
+                  key: "02",
                   icon: <UploadOutlined />,
                   label: "nav 3",
                 },
                 {
-                  key: "3",
+                  key: "03",
                   icon: <UploadOutlined />,
                   label: "nav 3",
                 },
@@ -60,24 +60,24 @@ const AppLayout: React.FC = () => {
               label: "nav 2",
               children: [
                 {
-                  key: "3",
+                  key: "04",
                   icon: <UploadOutlined />,
                   label: "nav 3",
                 },
                 {
-                  key: "3",
+                  key: "05",
                   icon: <UploadOutlined />,
                   label: "nav 3",
                 },
                 {
-                  key: "3",
+                  key: "06",
                   icon: <UploadOutlined />,
                   label: "nav 3",
                 },
               ],
             },
             {
-              key: "3",
+              key: "4",
               icon: <UploadOutlined />,
               label: "nav 3",
             },
