@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "prepare": "husky",
-    "test": "vitest",
+    "test": "vitest --watch=false",
     "test:ui": "vitest --ui",
     "test:ci": "vitest run"
   },
