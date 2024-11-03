@@ -8,8 +8,11 @@ export default {
   theme: {
     extend: {},
     colors: {
-      primary: "var(--primary-color)",
+      "primary-bg": "var(--primary-bg)",
     },
+    borderColor: {
+      primary: "var(--border-primary)",
+    }
   },
   plugins: [],
 }

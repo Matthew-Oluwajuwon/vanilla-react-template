@@ -92,7 +92,7 @@ export const ThemeProviderComponent: React.FC<MyComponentProps> = ({
           },
           Table: {
             fontSize: 12
-          }
+          },
         }
   };
 

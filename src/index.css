@@ -4,10 +4,14 @@
 
 /* Default (light) theme variables */
 :root {
-  --primary-color: "#6a35ff"
+  --primary-color: #6A35FF;
+  --border-primary: #E8E8E8;
+  --primary-bg: #FFFFFF;
 }
 
 /* Dark theme variables using the `dark` class */
 .dark {
   --primary-color: #121212;
+  --border-primary: #1F1F1F;
+  --primary-bg: #121212;
 }
