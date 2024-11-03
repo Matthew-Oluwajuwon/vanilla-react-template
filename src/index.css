@@ -4,14 +4,27 @@
 
 /* Default (light) theme variables */
 :root {
-  --primary-color: #6A35FF;
-  --border-primary: #E8E8E8;
-  --primary-bg: #FFFFFF;
+  --primary-color: #6a35ff;
+  --border-primary: #e8e8e8;
+  --primary-bg: #ffffff;
 }
 
 /* Dark theme variables using the `dark` class */
 .dark {
   --primary-color: #121212;
-  --border-primary: #1F1F1F;
+  --border-primary: #1f1f1f;
   --primary-bg: #121212;
+}
+
+:where(
+    .css-dev-only-do-not-override-a4tao3
+  ).ant-menu-light.ant-menu-root.ant-menu-inline,
+:where(.css-dev-only-do-not-override-a4tao3).ant-menu-light
+  > .ant-menu.ant-menu-root.ant-menu-inline,
+:where(
+    .css-dev-only-do-not-override-a4tao3
+  ).ant-menu-light.ant-menu-root.ant-menu-vertical,
+:where(.css-dev-only-do-not-override-a4tao3).ant-menu-light
+  > .ant-menu.ant-menu-root.ant-menu-vertical {
+  border-inline-end: none!important;
 }
