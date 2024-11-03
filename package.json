@@ -24,7 +24,7 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
-      "npm run test:ci",
+      "npm run test",
       "npm run lint"
     ]
   },
