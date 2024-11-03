@@ -25,6 +25,10 @@
     "*.js": [
       "npm test",
       "npm run lint"
+    ],
+    "*.ts": [
+      "npm test",
+      "npm run lint"
     ]
   },
   "devDependencies": {
