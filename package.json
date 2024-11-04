@@ -1,9 +1,9 @@
 {
-  "name": "vanilla-react",
+  "name": "vanilla-react-template",
   "version": "0.0.0",
   "type": "module",
   "bin": {
-    "create-template": "./bin/create-template.js"
+    "create-vanilla-react-template": "./bin/create-template.js"
   },
   "scripts": {
     "dev": "vite",
