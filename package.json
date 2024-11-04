@@ -1,5 +1,5 @@
 {
-  "name": "create-react-boiler-plate",
+  "name": "@matarazy28/create-react-boiler-plate",
   "version": "0.0.2",
   "type": "module",
   "bin": "./bin/cli.js",
