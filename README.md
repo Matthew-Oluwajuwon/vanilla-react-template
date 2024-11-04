@@ -1,50 +1,65 @@
-# React + TypeScript + Vite
+# Vanilla React Template
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A minimal and fast React template powered by Vite, designed to kickstart your React projects with sensible defaults.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Fast Development**: Utilizes Vite for rapid development and hot module replacement.
+- **Modern JavaScript**: Built with the latest features of JavaScript, including ES6+ syntax.
+- **Preconfigured**: Comes with a basic configuration out of the box to help you get started quickly.
+- **Lightweight**: Minimal dependencies to keep your project lightweight and performant.
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Prerequisites
 
-- Configure the top-level `parserOptions` property like this:
+Make sure you have the following installed:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- **Node.js** (v18 or higher)
+- **npm** (comes with Node.js)
+
+### Installation
+
+You can easily create a new project using this template with the following command:
+
+```bash
+npx @matarazy28/create-react-starter
+
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+During the installation, you'll be prompted to enter:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+App Name: Enter your desired application name (default is my-app).
+Port Number: Specify the port number on which you want to run your development server (default is 8001).
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+
+### Usage
+
+```bash
+cd your-app-name
+npm run dev
 ```
+
+Open your browser and visit http://localhost:your-port-number to see your app in action!
+
+### Customization
+You can customize your template by modifying the following files:
+
+package.json: Update project metadata, dependencies, and scripts.
+vite.config.ts: Configure Vite options and server settings.
+src/: This is where your application code resides. You can add components, styles, and assets here.
+
+### Contributing
+Contributions are welcome! If you have suggestions for improvements, please feel free to submit a pull request or open an issue.
+
+Acknowledgments
+Vite - The build tool that powers this template.
+React - The library for building user interfaces.
+vbnet
+
+### Key Changes
+
+1. **Installation Section**: I've included details about the prompts for the app name and port number during the installation process.
+2. **Clear Instructions**: The instructions are clear, making it easy for users to understand what to expect when they run the installation command.
+
+Feel free to modify any additional sections to suit your project’s needs!
