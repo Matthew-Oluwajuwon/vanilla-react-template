@@ -2,6 +2,7 @@
   "files": [],
 
   "compilerOptions": {
+    "types": ["vitest", "@testing-library/jest-dom"],
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]

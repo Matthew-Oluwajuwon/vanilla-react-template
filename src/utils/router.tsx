@@ -5,8 +5,8 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: (
-      <div className="h-screen flex items-center justify-center">
-        <Link to="/dashboard">Go to Dashboard</Link>
+      <div className="h-screen flex items-center justify-center bg-primary-bg">
+        <Link to="/dashboard" className="text-[#FFFFFF]">Go to Dashboard</Link>
       </div>
     ),
   },
