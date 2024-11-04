@@ -1,42 +1,61 @@
 #!/usr/bin/env node
 
 import { execSync } from "child_process";
+import fs from "fs";
+import path from "path";
+import inquirer from "inquirer";
 
-// Function to run shell commands with error handling
 const runCommand = (command) => {
   try {
     execSync(command, { stdio: "inherit" });
-    return true;
   } catch (error) {
-    console.error(`Error executing command: ${command}\n`, error.message);
+    console.error(`Failed to execute ${command}`, error);
     return false;
   }
+  return true;
 };
 
-// Get repository name from command-line arguments or set default to "my-app"
-const repoName = process.argv[2] || "my-app";
+// Function to get app name from user if not provided
+const getAppName = async () => {
+  const { appName } = await inquirer.prompt([
+    {
+      type: "input",
+      name: "appName",
+      message: "Enter your app name:",
+      default: "my-app",
+    },
+  ]);
+  return appName;
+};
 
-// Define commands for cloning and installing dependencies
-const gitCheckoutCommand = `git clone --depth 1 https://github.com/Matthew-Oluwajuwon/vanilla-react-template.git ${repoName}`;
-const installDepsCommand = `cd ${repoName} && npm install`;
+const main = async () => {
+  // Get repository name either from args or by asking the user
+  const repoName = process.argv[2] || await getAppName();
+  const gitCheckoutCommand = `git clone --depth 1 https://github.com/Matthew-Oluwajuwon/vanilla-react-template.git ${repoName}`;
+  const installDepsCommand = `cd ${repoName} && npm install`;
 
-// Start the project setup process
-console.log(`\nCloning the repository to create the project: ${repoName}...\n`);
+  console.log(`Cloning the repository with name ${repoName}...`);
+  const checkedOut = runCommand(gitCheckoutCommand);
+  if (!checkedOut) process.exit(-1);
 
-const isRepoCloned = runCommand(gitCheckoutCommand);
-if (!isRepoCloned) {
-  console.error("\nRepository cloning failed. Please check the repository URL or your network connection.");
-  process.exit(1);
-}
+  console.log(`Installing dependencies for ${repoName}...`);
+  const installedDeps = runCommand(installDepsCommand);
+  if (!installedDeps) process.exit(-1);
 
-console.log(`\nInstalling dependencies for ${repoName}...\n`);
-const areDepsInstalled = runCommand(installDepsCommand);
-if (!areDepsInstalled) {
-  console.error("\nDependency installation failed. Try running 'npm install' manually inside the project directory.");
-  process.exit(1);
-}
+  // Update package.json name
+  const packageJsonPath = path.join(repoName, "package.json");
+  try {
+    const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, "utf8"));
+    packageJson.name = repoName;
+    fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2));
+    console.log(`Updated package.json name to "${repoName}"`);
+  } catch (error) {
+    console.error("Failed to update package.json name", error);
+  }
 
-console.log(`\n🎉 Congratulations! Your project ${repoName} is ready to go.`);
-console.log("To get started, run the following commands:\n");
-console.log(`  cd ${repoName}`);
-console.log("  npm run dev\n");
+  console.log("Congratulations! You're ready to start. Run the commands below to begin:");
+  console.log(`\n  cd ${repoName}`);
+  console.log("  npm run dev");
+};
+
+main();
