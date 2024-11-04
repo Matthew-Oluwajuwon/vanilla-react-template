@@ -1,10 +1,8 @@
 {
-  "name": "vanilla-react-template",
+  "name": "create-vanilla-react-template",
   "version": "0.0.0",
   "type": "module",
-  "bin": {
-    "create-vanilla-react-template": "./bin/create-template.js"
-  },
+  "bin": "./bin/cli.js",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
