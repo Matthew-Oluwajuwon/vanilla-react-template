@@ -1,6 +1,6 @@
 {
-  "name": "create-vanilla-react-template",
-  "version": "0.0.1",
+  "name": "create-react-lite",
+  "version": "0.0.0",
   "type": "module",
   "bin": "./bin/cli.js",
   "scripts": {
