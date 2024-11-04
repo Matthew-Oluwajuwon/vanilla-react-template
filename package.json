@@ -3,6 +3,16 @@
   "version": "0.0.2",
   "type": "module",
   "bin": "./bin/cli.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Matthew-Oluwajuwon/vanilla-react-template.git"
+  },
+  "keywords": [
+    "frontend",
+    "react-template",
+    "react-starter",
+    "vite"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
