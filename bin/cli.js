@@ -28,6 +28,18 @@ const getAppName = async () => {
   return appName;
 };
 
+const getPortNumber = async () => {
+  const { portNo } = await inquirer.prompt([
+    {
+      type: "input",
+      name: "portNo",
+      message: "Enter your port number:",
+      default: "8001",
+    },
+  ]);
+  return portNo;
+};
+
 const main = async () => {
   // Get repository name either from args or by asking the user
   const repoName = process.argv[2] || await getAppName();
@@ -44,11 +56,16 @@ const main = async () => {
 
   // Update package.json name
   const packageJsonPath = path.join(repoName, "package.json");
+  const viteConfigPath = path.join(repoName, "vite.config.ts");
   try {
     const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, "utf8"));
+    const viteConfig = JSON.parse(fs.readFileSync(viteConfigPath, "utf8"));
     packageJson.name = repoName;
+    viteConfig.server.port = await getPortNumber() || 8000
     fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2));
+    fs.writeFileSync(viteConfigPath, JSON.stringify(viteConfig, null, 2));
     console.log(`Updated package.json name to "${repoName}"`);
+    console.log(`Updated vite port "${await getPortNumber() || 8000}"`);
   } catch (error) {
     console.error("Failed to update package.json name", error);
   }
