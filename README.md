@@ -23,7 +23,7 @@ Make sure you have the following installed:
 You can easily create a new project using this template with the following command:
 
 ```bash
-npx @matarazy28/create-react-starter
+npx @matarazy28/create-react-starter@latest
 
 ```
 
@@ -45,17 +45,16 @@ Open your browser and visit http://localhost:your-port-number to see your app in
 ### Customization
 You can customize your template by modifying the following files:
 
-package.json: Update project metadata, dependencies, and scripts.
-vite.config.ts: Configure Vite options and server settings.
-src/: This is where your application code resides. You can add components, styles, and assets here.
+- **package.json**: Update project metadata, dependencies, and scripts.
+- **vite.config.ts**: Configure Vite options and server settings.
+- **src/**: This is where your application code resides. You can add components, styles, and assets here.
 
 ### Contributing
 Contributions are welcome! If you have suggestions for improvements, please feel free to submit a pull request or open an issue.
 
-Acknowledgments
-Vite - The build tool that powers this template.
-React - The library for building user interfaces.
-vbnet
+### Acknowledgments
+- **Vite** - The build tool that powers this template.
+- **React** - The library for building user interfaces.
 
 ### Key Changes
 
