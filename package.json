@@ -1,8 +1,18 @@
 {
-  "name": "vanilla-react",
-  "private": true,
-  "version": "0.0.0",
+  "name": "@matarazy28/create-react-starter",
+  "version": "0.0.3",
   "type": "module",
+  "bin": "./bin/cli.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Matthew-Oluwajuwon/vanilla-react-template.git"
+  },
+  "keywords": [
+    "frontend",
+    "react-template",
+    "react-starter",
+    "vite"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -17,6 +27,7 @@
     "@reduxjs/toolkit": "^2.3.0",
     "antd": "^5.21.6",
     "crypto-js": "^4.2.0",
+    "inquirer": "^12.0.1",
     "lucide-react": "^0.454.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
