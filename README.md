@@ -29,8 +29,8 @@ npx @matarazy28/create-react-starter
 
 During the installation, you'll be prompted to enter:
 
-App Name: Enter your desired application name (default is my-app).
-Port Number: Specify the port number on which you want to run your development server (default is 8001).
+- **App Name**: Enter your desired application name (default is my-app).
+- **Port Number**: Specify the port number on which you want to run your development server (default is 8001).
 
 
 ### Usage
