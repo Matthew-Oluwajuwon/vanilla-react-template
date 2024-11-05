@@ -4,6 +4,7 @@ import { execSync } from "child_process";
 import fs from "fs";
 import path from "path";
 import inquirer from "inquirer";
+import chalk from "chalk";
 
 const runCommand = (command) => {
   try {
@@ -43,7 +44,7 @@ const getPortNumber = async () => {
 
 const main = async () => {
   // Get repository name either from args or by asking the user
-  const repoName = process.argv[2] || await getAppName();
+  const repoName = process.argv[2] || (await getAppName());
   const gitCheckoutCommand = `git clone --depth 1 https://github.com/Matthew-Oluwajuwon/vanilla-react-template.git ${repoName}`;
   const installDepsCommand = `cd ${repoName} && npm install`;
 
@@ -51,7 +52,7 @@ const main = async () => {
   const checkedOut = runCommand(gitCheckoutCommand);
   if (!checkedOut) process.exit(-1);
 
-  console.log(`Installing dependencies for ${repoName}...`);
+  console.log(chalk.blue(`Installing dependencies for ${repoName}...`));
   const installedDeps = runCommand(installDepsCommand);
   if (!installedDeps) process.exit(-1);
 
@@ -64,22 +65,25 @@ const main = async () => {
     const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, "utf8"));
     packageJson.name = repoName;
     fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2));
-    console.log(`Updated package.json name to "${repoName}"`);
+    console.log(chalk.green(`Updated package.json name to "${repoName}"`));
 
     // Update vite.config.ts with the selected port
     const portNumber = await getPortNumber();
     let viteConfig = fs.readFileSync(viteConfigPath, "utf8");
     viteConfig = viteConfig.replace(/port:\s*\d+/, `port: ${portNumber}`);
     fs.writeFileSync(viteConfigPath, viteConfig);
-    console.log(`Updated Vite server port to "${portNumber}"`);
-
+    console.log(chalk.green(`Updated Vite server port to "${portNumber}"`));
   } catch (error) {
     console.error("Failed to update package.json or vite.config.ts", error);
   }
 
-  console.log("Congratulations! You're ready to start. Run the commands below to begin:");
-  console.log(`\n  cd ${repoName}`);
-  console.log("  npm run dev");
+  console.log(
+    chalk.green(
+      "Congratulations! You're ready to start. Run the commands below to begin:"
+    )
+  );
+  console.log(chalk.green(`\n  cd ${repoName}`));
+  console.log(chalk.green("  npm run dev"));
 };
 
 main();
