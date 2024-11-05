@@ -10,7 +10,7 @@ const runCommand = (command) => {
   try {
     execSync(command, { stdio: "inherit" });
   } catch (error) {
-    console.error(`Failed to execute ${command}`, error);
+    console.error(chalk.red(`Failed to execute ${command}`), error);
     return false;
   }
   return true;
@@ -45,6 +45,8 @@ const getPortNumber = async () => {
 const main = async () => {
   // Get repository name either from args or by asking the user
   const repoName = process.argv[2] || (await getAppName());
+  // Update vite.config.ts with the selected port
+  const portNumber = await getPortNumber();
   const gitCheckoutCommand = `git clone --depth 1 https://github.com/Matthew-Oluwajuwon/vanilla-react-template.git ${repoName}`;
   const installDepsCommand = `cd ${repoName} && npm install`;
 
@@ -67,8 +69,6 @@ const main = async () => {
     fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2));
     console.log(chalk.green(`Updated package.json name to "${repoName}"`));
 
-    // Update vite.config.ts with the selected port
-    const portNumber = await getPortNumber();
     let viteConfig = fs.readFileSync(viteConfigPath, "utf8");
     viteConfig = viteConfig.replace(/port:\s*\d+/, `port: ${portNumber}`);
     fs.writeFileSync(viteConfigPath, viteConfig);
@@ -78,12 +78,14 @@ const main = async () => {
   }
 
   console.log(
-    chalk.green(
-      "Congratulations! You're ready to start. Run the commands below to begin:"
+    chalk.bgGreen(
+      chalk.white(
+        "🎉 Congratulations! You're ready to start. Run the commands below to begin:"
+      )
     )
   );
-  console.log(chalk.green(`\n  cd ${repoName}`));
-  console.log(chalk.green("  npm run dev"));
+  console.log(chalk.green(`\n📂  cd ${repoName}`));
+  console.log(chalk.green("🚀 npm run dev"));
 };
 
 main();
